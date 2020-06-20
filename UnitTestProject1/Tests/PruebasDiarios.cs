@@ -1,28 +1,37 @@
 ﻿namespace UnitTestProject1.Tests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using NUnit.Framework;
     using UnitTestProject1.Tasks;
+    using OpenQA.Selenium;
+    using OpenQA.Selenium.Support.UI;
+    using System;
+    using UI;
 
-    [TestClass]
     public class PruebasDiarios : BaseTest
     {
-        [TestInitialize]
+        [SetUp, Description("Configraciones iniciales.")]
         public void InicioSuite()
         {
-            Driver.GetIntance().Navigate().GoToUrl("http://www.clarin.com.ar");
+            Driver.Init();
+            //Driver.GetIntance().Navigate().GoToUrl("http://www.clarin.com.ar");
         }
 
-        [TestMethod]
+        [Test, Description("Busca en Clarin")]
         public void TestBusquedaPinoEnClarin()
         {
+            Driver.GetIntance().Navigate().GoToUrl("http://www.clarin.com.ar");
+            Navegación.ClickFueraDelPopUp();
             Navegación.buscar("pino");
-
+            Assert.IsTrue(Validaciones.BuscadorLargoVisible(), "Falló la búsqueda de pino en clarin");
         }
               
-        [TestCleanup]
-        public void FinSuite()
+        [Test, Description("Acceder a Outlook desde google.")]
+        public void TestAccederAOutlookDesdeGoogle()
         {
-
+            Navegación.IrAUrl("https://www.google.com.ar/");
+            Navegación.BusquedaEnGoogle("Outlook");
+            Assert.IsTrue(Validaciones.TituloOutlookVisible("Outlook – free personal email and calendar from Microsoft"), "No se encontró el título de Outlook");
         }
+    
     }
 }

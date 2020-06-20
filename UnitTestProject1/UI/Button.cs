@@ -6,6 +6,8 @@ namespace UnitTestProject1.UI
 
     public static class Button
     {
-        private static By botonLupa { get; }  = By.Name("INICIO");
+        private static By botonLupa = By.Name("INICIO");
+
+        public static By BotonLupa() { return botonLupa; }
     }
 }
