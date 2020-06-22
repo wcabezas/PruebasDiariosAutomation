@@ -9,13 +9,6 @@
 
     public class PruebasDiarios : BaseTest
     {
-        [SetUp, Description("Configraciones iniciales.")]
-        public void InicioSuite()
-        {
-            Driver.Init();
-            //Driver.GetIntance().Navigate().GoToUrl("http://www.clarin.com.ar");
-        }
-
         [Test, Description("Busca en Clarin")]
         public void TestBusquedaPinoEnClarin()
         {
