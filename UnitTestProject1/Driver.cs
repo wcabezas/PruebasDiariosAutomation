@@ -4,7 +4,7 @@
     using OpenQA.Selenium;
     using OpenQA.Selenium.Chrome;
     using NUnit.Framework;
-    class Driver
+    public static class Driver
     {
         private static string    browser = "Chrome";
         private static IWebDriver driver;

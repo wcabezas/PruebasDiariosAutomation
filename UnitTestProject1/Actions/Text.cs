@@ -7,8 +7,8 @@
     {
         public static void On(By locator, String text)
         {
-            Driver.GetIntance().FindElement(locator).SendKeys(text);
-            Driver.GetIntance().FindElement(locator).SendKeys(Keys.Enter);
+            Enter.EnviarTexto(locator, text);
+            Enter.KeyEnter(locator, text);
         }
     }
 }

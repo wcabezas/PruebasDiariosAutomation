@@ -3,7 +3,7 @@
     using System;
     using UnitTestProject1.Actions;
     using UnitTestProject1.UI;
-    using Tests;
+    
 
     class Navegación
     {
@@ -40,12 +40,54 @@
 
         public static void IrAUrl(String url)
         {
-            Driver.GetIntance().Navigate().GoToUrl(url);
+            try
+            {
+                Driver.GetIntance().Navigate().GoToUrl(url);
+                XLog.Message("Ir a " + url + ", OK");
+            }
+            catch (System.Exception)
+            {
+                XLog.Message("Ir a " + url + ", KO");
+                throw new System.Exception("No se pudo ir a " + url);
+            }
+            Driver.TaskPrint();
         }
 
         public static void BusquedaEnGoogle(String texto)
         {
-            Text.On(InputDate.BuscadorGoogle(), texto);
+            try
+            {
+                Text.On(InputDate.BuscadorGoogle(), texto);
+                XLog.Message("Busqueda de " + texto + " en Google, OK");
+            }
+            catch (System.Exception)
+            {
+                XLog.Message("Busqueda de " + texto + " en Google, KO");
+                throw new System.Exception("Fallo la busqueda en google.");
+            }
+            Driver.TaskPrint();
         }
+
+        public static void LogInOutlook(String mail, String password)
+        {
+            try
+            {
+                Click.On(Texto.ResultadoOutlook());
+                Click.On(Button.BtnIniciarSesion());
+                Enter.EnviarTexto(InputDate.InputMail(), mail);
+                Click.On(Button.BtnSiguiente());
+                Enter.EnviarTexto(InputDate.InputPassWord(), password);
+                Click.On(Button.BtnSiguiente());
+                XLog.Message("LogIn en Outlook, OK");
+            }
+            catch (System.Exception)
+            {
+                XLog.Message("LogIn en Outlook, KO");
+                throw new System.Exception("Fallo LogIn en Outlook");
+            }
+            Driver.TaskPrint();
+        }
+
     }
+
 }

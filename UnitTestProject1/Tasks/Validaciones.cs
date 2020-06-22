@@ -20,5 +20,22 @@
         {
             return Driver.GetIntance().FindElement(Texto.ResultadoOutlook()).Text.Contains(text);
         }
+
+        public static bool SeMuestraBotonBandejaDeEntrada()
+        {
+            try
+            {
+                XLog.Message("Validacion de Boton Bandeja de entrada, OK");
+                System.Console.WriteLine(Element.On(Button.BtnBandejaEntrada()).Text);
+                WaitUntil.ElementIsPresent(Button.BtnBandejaEntrada(), 380);
+                return Element.On(Button.BtnBandejaEntrada()).Text.Contains("Bandeja de entrada");
+            }
+            catch (System.Exception)
+            {
+                XLog.Message("Validacion de Boton Bandeja de entrada, KO");
+                throw new System.Exception("Fallo la validacion del boton Bandejade entrada");
+            }
+
+        }
     }
 }

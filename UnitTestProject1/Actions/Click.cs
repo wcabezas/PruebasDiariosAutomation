@@ -6,7 +6,7 @@
     {
         public static void On(By locator)
         {
-            Driver.GetIntance().FindElement(locator).Click();        
+            Element.On(locator).Click();        
         }
     }
 }

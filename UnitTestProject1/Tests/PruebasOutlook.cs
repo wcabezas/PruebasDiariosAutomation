@@ -32,6 +32,16 @@
             Navegación.BusquedaEnGoogle("Outlook");
             Assert.IsTrue(Validaciones.TituloOutlookVisible("Outlook – free personal email and calendar from Microsoft"), "No se encontró el título de Outlook");
         }
-    
+
+        [Test, Description("Acceder a Outlook desde google.")]
+        public void TestLogueoEnOutlook()
+        {
+            Navegación.IrAUrl("https://www.google.com.ar/");
+            Navegación.BusquedaEnGoogle("Outlook");
+            Navegación.LogInOutlook("willian.cabezasroa@outlook.com", "cordero4376");
+            Assert.IsTrue(Validaciones.SeMuestraBotonBandejaDeEntrada(), "Fallo el logueo en Outlook");
+        }
+
+
     }
 }
