@@ -2,22 +2,10 @@
 {
     using NUnit.Framework;
     using UnitTestProject1.Tasks;
-    using OpenQA.Selenium;
-    using OpenQA.Selenium.Support.UI;
-    using System;
-    using UI;
 
-    public class PruebasDiarios : BaseTest
+    public class PruebasOutlook : BaseTest
     {
-        [Test, Description("Busca en Clarin")]
-        public void TestBusquedaPinoEnClarin()
-        {
-            Driver.GetIntance().Navigate().GoToUrl("http://www.clarin.com.ar");
-            Navegación.ClickFueraDelPopUp();
-            Navegación.buscar("pino");
-            Assert.IsTrue(Validaciones.BuscadorLargoVisible(), "Falló la búsqueda de pino en clarin");
-        }
-              
+
         [Test, Description("Acceder a Outlook desde google.")]
         public void TestAccederAOutlookDesdeGoogle()
         {
@@ -26,7 +14,7 @@
             Assert.IsTrue(Validaciones.TituloOutlookVisible("Outlook – free personal email and calendar from Microsoft"), "No se encontró el título de Outlook");
         }
 
-        [Test, Description("Acceder a Outlook desde google.")]
+        [Test, Description("LogIn en Outlook")]
         public void TestLogueoEnOutlook()
         {
             Navegación.IrAUrl("https://www.google.com.ar/");
@@ -35,6 +23,36 @@
             Assert.IsTrue(Validaciones.SeMuestraBotonBandejaDeEntrada(), "Fallo el logueo en Outlook");
         }
 
+        [Test, Description("Borrar Spam")]
+        public void TestBorrarSpamOutlook()
+        {
+            Navegación.IrAUrl("https://www.google.com.ar/");
+            Navegación.BusquedaEnGoogle("Outlook");
+            Navegación.LogInOutlook("willian.cabezasroa@outlook.com", "cordero4376");
+            Navegación.EliminarSpam();
+            Assert.IsTrue(Validaciones.TextoDeMailEliminado(), "Fallo la eliminación de correo Spam");
+        }
 
+        [Test, Description("Enviar Mail")]
+        public void TestEnviarMailOutlook()
+        {
+            Navegación.IrAUrl("https://www.google.com.ar/");
+            Navegación.BusquedaEnGoogle("Outlook");
+            Navegación.LogInOutlook("willian.cabezasroa@outlook.com", "cordero4376");
+            Navegación.EnviarMailOutlook();
+            Navegación.IrAMensajesEnviados();
+            Assert.IsTrue(Validaciones.ElMensajeFueEnviado(), "Fallo el envio de mensaje desde outlook");
+        }
+
+        [Test, Description("Buscar mail por asunto y eliminarlo")]
+        public void TestEliminarMailBuscadoPorAsunto()
+        {
+            Navegación.IrAUrl("https://www.google.com.ar/");
+            Navegación.BusquedaEnGoogle("Outlook");
+            Navegación.LogInOutlook("willian.cabezasroa@outlook.com", "cordero4376");
+            Navegación.BuscarMensaje();
+            Navegación.EliminarMensaje();
+            Assert.IsTrue(Validaciones.TextoDeMailEliminado(),"Fallo la eliminacion del mensaje");
+        }
     }
 }

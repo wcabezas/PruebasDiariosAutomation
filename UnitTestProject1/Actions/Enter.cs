@@ -13,10 +13,16 @@ namespace UnitTestProject1.Actions
             
         }
 
-        public static void KeyEnter(By locator, string texto)
+        public static void KeyEnter(By locator)
         {
             Element.On(locator).SendKeys(Keys.Enter) ;
             
+        }
+
+        public static void KeyTab(By locator)
+        {
+            Element.On(locator).SendKeys(Keys.Tab);
+
         }
     }
 }

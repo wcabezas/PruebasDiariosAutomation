@@ -69,6 +69,7 @@
     <Compile Include="Actions\Text.cs" />
     <Compile Include="Actions\WaitUntil.cs" />
     <Compile Include="BaseTest.cs" />
+    <Compile Include="DatosDePrueba.cs" />
     <Compile Include="Driver.cs" />
     <Compile Include="Tasks\Pantalla.cs" />
     <Compile Include="Tasks\Navegación.cs" />

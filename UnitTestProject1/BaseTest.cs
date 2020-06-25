@@ -5,7 +5,7 @@
 
     public abstract class BaseTest
     {
-        private string baseURL = "https://www.google.com.ar";
+        private readonly string baseURL = "https://www.google.com.ar";
 
         [SetUp]
         public void SetupTest()
