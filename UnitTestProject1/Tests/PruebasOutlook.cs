@@ -19,7 +19,7 @@
         {
             Navegación.IrAUrl("https://www.google.com.ar/");
             Navegación.BusquedaEnGoogle("Outlook");
-            Navegación.LogInOutlook("willian.cabezasroa@outlook.com", "cordero4376");
+            Navegación.LogInOutlook("TuMail", "TuContraseña");
             Assert.IsTrue(Validaciones.SeMuestraBotonBandejaDeEntrada(), "Fallo el logueo en Outlook");
         }
 
@@ -28,7 +28,7 @@
         {
             Navegación.IrAUrl("https://www.google.com.ar/");
             Navegación.BusquedaEnGoogle("Outlook");
-            Navegación.LogInOutlook("willian.cabezasroa@outlook.com", "cordero4376");
+            Navegación.LogInOutlook("TuMail", "TuContraseña");
             Navegación.EliminarSpam();
             Assert.IsTrue(Validaciones.TextoDeMailEliminado(), "Fallo la eliminación de correo Spam");
         }
@@ -38,7 +38,7 @@
         {
             Navegación.IrAUrl("https://www.google.com.ar/");
             Navegación.BusquedaEnGoogle("Outlook");
-            Navegación.LogInOutlook("willian.cabezasroa@outlook.com", "cordero4376");
+            Navegación.LogInOutlook("TuMail", "TuContraseña");
             Navegación.EnviarMailOutlook();
             Navegación.IrAMensajesEnviados();
             Assert.IsTrue(Validaciones.ElMensajeFueEnviado(), "Fallo el envio de mensaje desde outlook");
@@ -49,7 +49,7 @@
         {
             Navegación.IrAUrl("https://www.google.com.ar/");
             Navegación.BusquedaEnGoogle("Outlook");
-            Navegación.LogInOutlook("willian.cabezasroa@outlook.com", "cordero4376");
+            Navegación.LogInOutlook("TuMail", "TuContraseña");
             Navegación.BuscarMensaje();
             Navegación.EliminarMensaje();
             Assert.IsTrue(Validaciones.TextoDeMailEliminado(),"Fallo la eliminacion del mensaje");
